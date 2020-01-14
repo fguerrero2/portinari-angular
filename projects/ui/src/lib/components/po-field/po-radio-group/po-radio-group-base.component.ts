@@ -2,6 +2,7 @@ import { AbstractControl, ControlValueAccessor, Validator } from '@angular/forms
 import { EventEmitter, Input, Output } from '@angular/core';
 
 import { convertToBoolean, convertToInt, removeDuplicatedOptions } from '../../../utils/util';
+import { InputBoolean } from '../../../decorators';
 import { requiredFailed } from '../validators';
 
 import { PoRadioGroupOption } from './po-radio-group-option.interface';
@@ -33,6 +34,17 @@ export abstract class PoRadioGroupBaseComponent implements ControlValueAccessor,
 
   private onChangePropagate: any = null;
   private validatorChange;
+
+  /**
+   * @optional
+   *
+   * @description
+   *
+   * Aplica foco no elemento ao ser iniciado.
+   *
+   * @default `false`
+   */
+  @Input('p-auto-focus') @InputBoolean() autoFocus: boolean = false;
 
   /** Nome das opções. */
   @Input('name') name: string;
